@@ -73,9 +73,13 @@ def match_users():
     return jsonify({"matches": matches}), 200
 
 # ✅ Ensure Flask is properly bound for production
+import os
+
 if __name__ == "__main__":
-    print("✅ Flask is now running on port 5000 and listening for requests.")
+    port = int(os.environ.get("PORT", 5000))  # Get PORT from Railway
+    print(f"✅ Flask is now running on port {port} and listening for requests.")
     try:
-        app.run(host="0.0.0.0", port=5000, debug=True)
+        app.run(host="0.0.0.0", port=port, debug=True)
     except Exception as e:
         print(f"🚨 Flask failed to start: {e}")
+
