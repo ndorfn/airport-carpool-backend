@@ -69,4 +69,10 @@ def match_users():
 # ✅ Ensure Flask is properly bound for production
 if __name__ == "__main__":
     print("✅ Flask is now running on port 5000 and listening for requests.")
+    try:
+        app.run(host="0.0.0.0", port=5000, debug=True)
+    except Exception as e:
+        print(f"🚨 Flask failed to start: {e}")
+
+    print("✅ Flask is now running on port 5000 and listening for requests.")
     app.run(host="0.0.0.0", port=5000, debug=True)
