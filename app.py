@@ -75,13 +75,16 @@ def match_users():
 # ✅ Ensure Flask is properly bound for production
 import os
 
-import os
-
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))  # Get PORT from Railway
+    port = os.environ.get("PORT")
+    if not port:
+        port = 5000  # Default to 5000 if Railway isn't setting a port
+        print("⚠️ WARNING: No PORT variable found! Defaulting to 5000.")
+
     print(f"✅ Flask is now running on port {port} and listening for requests.")
+    
     try:
-        app.run(host="0.0.0.0", port=port, debug=True)
+        app.run(host="0.0.0.0", port=int(port), debug=True)
     except Exception as e:
         print(f"🚨 Flask failed to start: {e}")
 
