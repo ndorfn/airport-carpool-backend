@@ -8,6 +8,9 @@ logging.basicConfig(level=logging.DEBUG)
 print("✅ Flask app is starting...")  
 
 app = Flask(__name__)
+@app.route("/", methods=["GET"])
+def home():
+    return jsonify({"message": "Welcome to the Airport Carpool API!"}), 200
 
 # ✅ Log every incoming request
 @app.before_request
