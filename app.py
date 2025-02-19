@@ -75,6 +75,8 @@ def match_users():
 # ✅ Ensure Flask is properly bound for production
 import os
 
+import os
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))  # Get PORT from Railway
     print(f"✅ Flask is now running on port {port} and listening for requests.")
