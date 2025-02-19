@@ -5,9 +5,14 @@ from flask import Flask, request, jsonify
 # Configure logging for debugging
 logging.basicConfig(level=logging.DEBUG)
 
-print("✅ Flask app is starting...")
+print("✅ Flask app is starting...")  
 
 app = Flask(__name__)
+
+# ✅ Log every incoming request
+@app.before_request
+def log_request_info():
+    print(f"📥 Incoming Request: {request.method} {request.path}")
 
 # ✅ Health Check Route (To Test if Flask is Running)
 @app.route("/health", methods=["GET"])
@@ -73,6 +78,3 @@ if __name__ == "__main__":
         app.run(host="0.0.0.0", port=5000, debug=True)
     except Exception as e:
         print(f"🚨 Flask failed to start: {e}")
-
-    print("✅ Flask is now running on port 5000 and listening for requests.")
-    app.run(host="0.0.0.0", port=5000, debug=True)
