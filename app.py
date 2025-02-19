@@ -14,6 +14,7 @@ app = Flask(__name__)
 def log_request_info():
     print(f"📥 Incoming Request: {request.method} {request.path}")
 
+
 # ✅ Health Check Route (To Test if Flask is Running)
 @app.route("/health", methods=["GET"])
 def health():
